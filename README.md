@@ -17,7 +17,7 @@ Ce dépôt contient le code source pour le projet de notre association. Ce proje
 
 ## Comment Contribuer
 
-   git clone https://github.com/votre-utilisateur/association.git
+   git clone https://github.com/NassCT/association.git
 
    git checkout -b nom-de-votre-branche
 

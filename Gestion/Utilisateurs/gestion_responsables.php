@@ -87,7 +87,7 @@
         echo "<tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Action</th></tr>";
         while ($responsable = mysqli_fetch_assoc($responsablesResult)) {
             echo "<form method='POST' action=''>";
-            echo "<tr> ";
+            echo "<tr>";
             echo "<td>{$responsable['num_resp']}</td>";
             echo "<td><input type='text' name='nom_resp' value='{$responsable['nom_resp']}' required></td>";
             echo "<td><input type='text' name='prenom_resp' value='{$responsable['prenom_resp']}' required></td>";

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('..\..\include\connexion.php');
+include('../../include/connexion.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['register'])) {

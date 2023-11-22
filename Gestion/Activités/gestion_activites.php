@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Activités</title>
-    <link rel="stylesheet" href="..\..\CSS\styles.css">
+    <link rel="stylesheet" href="../../CSS/styles.css">
 </head>
 
 <body>
 
-    <a href="..\..\dashboard.php" class="button">Retour</a>
+    <a href="../../dashboard.php" class="button">Retour</a>
 
     <h1 class="Title" class="hey">Ajouter une nouvelle activité</h1 class="Title">
     <div class="form">
@@ -20,7 +20,7 @@
             <input type="text" name="site" placeholder="Site" required><br>
             <select name='num_resp' required>
                 <?php
-                include('..\..\include\connexion.php');
+                include('../../include/connexion.php');
                 $responsablesQuery = "SELECT * FROM responsable";
                 $responsablesResult = mysqli_query($conn, $responsablesQuery);
                 echo '<option value="" disabled selected>Choisissez un responsable</option>';

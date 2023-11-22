@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modifier un Utilisateur</title>
-    <link rel="stylesheet" href="..\..\CSS\styles.css">
+    <link rel="stylesheet" href="../../CSS/styles.css">
 </head>
 <body>
     <h1 class="Title">Modifier un Utilisateur</h1 class="Title">
 
-    <a href="..\..\dashboard.php" class="button">Retour</a>
+    <a href="../../dashboard.php" class="button">Retour</a>
 
     <?php
     session_start();
 
-    include('..\..\include\connexion.php'); 
+    include('../../include/connexion.php'); 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST['id'];
@@ -60,7 +60,7 @@
             echo "</select>";
             echo "</td>";
             echo "<td><input type='hidden' name='id' value='{$row['id']}'>";
-            echo "<button class=\"bt2\"  type=\"submit\" name=\"modifier\">Modifier</button></td>";
+            echo "<button class=\"bt2\" type=\"submit\" name=\"modifier\">Modifier</button></td>";
             echo "</tr>";
             echo "</form>";
         }

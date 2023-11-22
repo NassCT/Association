@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription aux activités</title>
-    <link rel="stylesheet" href="CSS\styles.css">
+    <link rel="stylesheet" href="CSS/styles.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
             <select name="id_act" required>
                 <option value="" disabled selected>Choisir une activité</option>
                 <?php
-                include('include\connexion.php');
+                include('include/connexion.php');
 
                 $activitesQuery = "SELECT * FROM activite";
                 $activitesResult = mysqli_query($conn, $activitesQuery);

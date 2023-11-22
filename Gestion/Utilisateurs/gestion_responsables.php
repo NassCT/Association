@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Responsables</title>
-    <link rel="stylesheet" href="..\..\CSS\styles.css">
+    <link rel="stylesheet" href="../../CSS/styles.css">
 </head>
 
 <body>
 
-    <a href="..\..\dashboard.php" class="button">Retour</a>
+    <a href="../../dashboard.php" class="button">Retour</a>
 
     <h1 class="Title">Ajouter un nouveau responsable</h1>
     <div class="form">
@@ -25,7 +25,7 @@
     <h1 class="Title">Liste des Responsables</h1>
 
     <?php
-    include('..\..\include\connexion.php');
+    include('../../include/connexion.php');
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

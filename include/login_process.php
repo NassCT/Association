@@ -1,11 +1,7 @@
 <?php
 session_start();
 
-$mysqli = new mysqli("localhost", "root", "", "association");
-
-if ($mysqli->connect_error) {
-    die("<div class='err_message'> La connexion à la base de données a échoué :  </div>" . $conn->connect_error);
-}
+include('..\..\include\connexion.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['register'])) {
@@ -16,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $insert_query ="INSERT INTO utilisateurs (username, password, role, email) VALUES ($name, $pass, $role, $email)";
 
-        if ($mysqli->query($insert_query) === TRUE) {
+        if ($conn->query($insert_query) === TRUE) {
             $_SESSION['admin'] = true;
             header('Location: ../dashboard.php');
         } else {
@@ -27,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = $_POST['password'];
 
         $login_query = "SELECT * FROM utilisateurs WHERE username='$username' AND password='$password'";
-        $login_result = $mysqli->query($login_query);
+        $login_result = $conn->query($login_query);
 
         if ($login_result->num_rows == 1) {
             $_SESSION['admin'] = true;
@@ -38,4 +34,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$mysqli->close();
+$conn->close();

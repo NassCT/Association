@@ -36,11 +36,7 @@
     <?php
     session_start();
 
-    $mysqli = new mysqli("localhost", "root", "", "association");
-
-    if ($mysqli->connect_error) {
-        die("La connexion à la base de données a échoué : " . $mysqli->connect_error);
-    }
+    include('include/connexion.php');
 
     $error_message = "";
 
@@ -53,7 +49,7 @@
 
             $insert_query = "INSERT INTO utilisateurs (username, password, role, email) VALUES ('$username', '$password', '$role', '$email')";
 
-            if ($mysqli->query($insert_query) === TRUE) {
+            if ($conn->query($insert_query) === TRUE) {
                 $_SESSION['admin'] = true;
                 header('Location: dashboard.php');
             } else {
@@ -64,7 +60,7 @@
             $password = $_POST['password'];
 
             $login_query = "SELECT * FROM utilisateurs WHERE username='$username' AND password='$password'";
-            $login_result = $mysqli->query($login_query);
+            $login_result = $conn->query($login_query);
 
             if ($login_result->num_rows == 1) {
                 $_SESSION['admin'] = true;
@@ -75,7 +71,7 @@
         }
     }
 
-    $mysqli->close();
+    $conn->close();
     ?>
 
     <script src="Autre/index.js"></script>

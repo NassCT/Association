@@ -1,2 +1,4 @@
 # .gitignore
-connexion.php
+include/connexion.php
+refresh.js
+```

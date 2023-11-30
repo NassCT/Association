@@ -3,7 +3,7 @@
 
 <head>
     <title>Connexion Admin</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 
 <body>
@@ -74,7 +74,7 @@
     $conn->close();
     ?>
 
-    <script src="Autre/index.js"></script>
+    <script src="assets/index.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var errorMessage = "<?php echo $error_message; ?>";

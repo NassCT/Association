@@ -1,18 +1,65 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
-* {
-  box-sizing: border-box;
+
+.logo-icon_design {
+  width: 18.2px;
+  height: 18.4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-:root {
-  --first-color: #e7eaf6;
-  --second-color: #a2a8d3;
-  --third-color: #38598b;
-  --fourth-color: #113f67;
-  --input-bgcolor: #f2f2f2;
-  --fifth-color: #ffd500;
+
+/* Navbar */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
 
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left 0.5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+/* Reset CSS */
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--first-color);
@@ -84,10 +131,12 @@ a.button,
 button.bt {
   background-color: #3498db;
 }
+
 a.button2,
 button.bt2 {
   background-color: #ffd500;
 }
+
 a.button3,
 button.bt3 {
   background-color: #e74c3c;
@@ -98,10 +147,12 @@ a.button:hover,
 button.bt:hover {
   background-color: #2980b9;
 }
+
 a.button2:hover,
 button.bt2:hover {
   background-color: #e9b020;
 }
+
 a.button3:hover,
 button.bt3:hover {
   background-color: #c33222;
@@ -114,6 +165,7 @@ button.bt3:hover {
   padding: 10% 0 0;
   margin: auto;
 }
+
 .form {
   position: relative;
   z-index: 1;
@@ -124,6 +176,7 @@ button.bt3:hover {
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
+
 .form input {
   outline: 0;
   background: var(--input-bgcolor);
@@ -133,6 +186,7 @@ button.bt3:hover {
   padding: 1rem;
   font-size: 0.9rem;
 }
+
 .form button {
   text-transform: uppercase;
   outline: 0;
@@ -146,20 +200,24 @@ button.bt3:hover {
   transition: all 0.3s ease;
   cursor: pointer;
 }
+
 .form button:hover,
 .form button:active,
 .form button:focus {
   background: var(--third-color);
 }
+
 .form .message {
   margin: 15px 0 0;
   color: var(--second-color);
   font-size: 0.8rem;
 }
+
 .form .message a {
   color: var(--third-color);
   text-decoration: none;
 }
+
 .form .register-form {
   display: none;
 }
@@ -179,6 +237,7 @@ button.bt3:hover {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -197,6 +256,7 @@ button.bt3:hover {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -213,6 +273,7 @@ button.bt3:hover {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -229,12 +290,14 @@ button.bt3:hover {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
 }
 
-.err_message { /* Pas de disparition */
+.err_message {
+  /* Pas de disparition */
   color: rgb(235, 43, 43);
   font-weight: bold;
   animation: fadeIn 0.5s ease-in-out 0.5s, fadeOut 0.5s ease-in-out 2.5s;
@@ -242,13 +305,20 @@ button.bt3:hover {
 
 /* Selects */
 select {
-  width: 100%; /* La largeur du select occupe 100% de la largeur du conteneur parent */
-  padding: 10px; /* Rembourrage à l'intérieur du select */
-  font-size: 16px; /* Taille de la police du texte dans le select */
-  border: 1px solid #ccc; /* Bordure grise */
-  border-radius: 5px; /* Coins arrondis */
-  outline: none; /* Supprimer la bordure bleue lorsqu'il est sélectionné */
-  margin-bottom: 10px; /* Espacement en bas du select */
+  width: 100%;
+  /* La largeur du select occupe 100% de la largeur du conteneur parent */
+  padding: 10px;
+  /* Rembourrage à l'intérieur du select */
+  font-size: 16px;
+  /* Taille de la police du texte dans le select */
+  border: 1px solid #ccc;
+  /* Bordure grise */
+  border-radius: 5px;
+  /* Coins arrondis */
+  outline: none;
+  /* Supprimer la bordure bleue lorsqu'il est sélectionné */
+  margin-bottom: 10px;
+  /* Espacement en bas du select */
 }
 
 select option[disabled][selected] {

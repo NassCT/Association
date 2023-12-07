@@ -12,50 +12,60 @@
     <aside>
         <!-- Menu -->
         <p>Menu</p>
-        <a href="">
-            <i class="fa fa-user-o" aria-hidden="true"></i>
-            My drive
+        <a href="dashboard.php" class="nav-link current-page">
+            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+            <span>Tableau de bord</span>
         </a>
-        <a href="">
-            <i class="fa fa-laptop" aria-hidden="true"></i>
-            Computers
+        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link ">
+            <object type="image/svg+xml" data="assets/img/icone/users.svg" class="navbar-icon"></object>
+            <span>Gestion des utilisateurs</span>
         </a>
-        <a href="">
-            <i class="fa fa-clone" aria-hidden="true"></i>
-            Shared with me
+        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
+            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+            <span>Gestion des responsables</span>
         </a>
-        <a href="">
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-            Starred
+        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
+            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+            <span>Gestion des activités</span>
         </a>
-        <a href="">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-            Trash
+        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
+            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+            <span>Gestion des créneaux</span>
+        </a>
+        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
+            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+            <span>Gestion des participants</span>
+        </a>
+        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
+            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+            <span>Gestion des participations</span>
+        </a>
+        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
+            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+            <span>Gestion des utilisateurs</span>
+        </a>
+        <a href="include/logout.php" class="nav-link">
+            <object type="image/svg+xml" data="assets/img/icone/logout.svg" class="navbar-icon"></object>
+            <span>Déconnexion</span>
         </a>
     </aside>
-
-    <div class="social">
-        <a href="https://www.linkedin.com/in/florin-cornea-b5118057/" target="_blank">
-            <i class="fa fa-linkedin"></i>
-        </a>
-    </div>
-
-
-    <!--
-    <div class="container">
-        <h1 class="Title">Bienvenue dans la page d'administration</h1>
-        <p>Choisissez une option :</p>
-        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="button">Gérer les Utilisateurs</a>
-        <a href="Gestion/Utilisateurs/gestion_responsables.php" class="button">Gérer les responsables</a>
-        <a href="Gestion/Activités/gestion_activites.php" class="button">Gérer les activités</a>
-        <a href="Gestion/Activités/gestion_creneaux.php" class="button">Gérer les créneaux</a>
-        <a href="Gestion/Utilisateurs/gestion_participants.php" class="button">Gérer les participants</a>
-        <a href="Gestion/Activités/gestion_participations.php" class="button">Gérer les participations</a><br><br>
-        <a href="inscription.php" class="button">Inscrire un utilisateur</a>
-        <a href="index.php" class="button2">Changer de session</a>
-        <a href="include/logout.php" class="button3">Déconnexion</a>
-    </div>
-    -->
 </body>
+
+
+
+<div class="container">
+    <h1 class="Title">Bienvenue dans la page d'administration</h1>
+    <p>Choisissez une option :</p>
+    <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="button">Gérer les Utilisateurs</a>
+    <a href="Gestion/Utilisateurs/gestion_responsables.php" class="button">Gérer les responsables</a>
+    <a href="Gestion/Activités/gestion_activites.php" class="button">Gérer les activités</a>
+    <a href="Gestion/Activités/gestion_creneaux.php" class="button">Gérer les créneaux</a>
+    <a href="Gestion/Utilisateurs/gestion_participants.php" class="button">Gérer les participants</a>
+    <a href="Gestion/Activités/gestion_participations.php" class="button">Gérer les participations</a><br><br>
+    <a href="inscription.php" class="button">Inscrire un utilisateur</a>
+    <a href="index.php" class="button2">Changer de session</a>
+    <a href="include/logout.php" class="button3">Déconnexion</a>
+</div>
+
 
 </html>

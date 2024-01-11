@@ -10,104 +10,147 @@
 </head>
 
 <body>
+    <div class="container">
 
-    <a href="../../dashboard.php" class="button">Retour</a>
+        <!-- NavBar -->
+        <aside>
+            <!-- Menu -->
+            <p>Menu</p>
+            <a href="/Association/dashboard.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Tableau de bord</span>
+            </a>
+            <a href="/Association/Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/users.svg" class="navbar-icon"></object>
+                <span>Gestion des utilisateurs</span>
+            </a>
+            <a href="/Association/Gestion/Utilisateurs/gestion_responsables.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des responsables</span>
+            </a>
+            <a href="/Association/Gestion/Activités/gestion_activites.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des activités</span>
+            </a>
+            <a href="/Association/Gestion/Activités/gestion_creneaux.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des créneaux</span>
+            </a>
+            <a href="/Association/Gestion/Utilisateurs/gestion_participants.php" class="nav-link current-page">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des participants</span>
+            </a>
+            <a href="/Association/Gestion/Activités/gestion_participations.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des participations</span>
+            </a>
+            <a href="/Association/include/logout.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/logout.svg" class="navbar-icon logout"></object>
+                <span>Déconnexion</span>
+            </a>
+        </aside>
 
-    <h1 class="Title">Ajouter un nouveau participant</h1>
-    <div class="form">
-        <form method="POST" action="">
-            <input type="text" name="nom_participant" placeholder="Nom du participant" required><br>
-            <input type="text" name="prenom_participant" placeholder="Prénom du participant" required><br>
-            <input type="email" name="mail_participant" placeholder="Email du participant" required><br>
-            <button type="submit" name="ajouter">Ajouter</button>
-        </form>
-    </div>
+        <div class="xcontent">
 
-    <h1 class="Title">Liste des participants</h1>
+            <a href="../../dashboard.php" class="button">Retour</a>
 
-    <?php
-    include('../../include/connexion.php');
+            <h1 class="Title"><br>Ajouter un nouveau participant</h1>
+            <div class="form">
+                <form method="POST" action="">
+                    <input type="text" name="nom_participant" placeholder="Nom du participant" required><br>
+                    <input type="text" name="prenom_participant" placeholder="Prénom du participant" required><br>
+                    <input type="email" name="mail_participant" placeholder="Email du participant" required><br>
+                    <button type="submit" name="ajouter">Ajouter</button>
+                </form>
+            </div>
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            <br></br>
+            <h1 class="Title"><br>Liste des participants</h1>
 
-        $nom_participant = $_POST['nom_participant'];
-        $prenom_participant = $_POST['prenom_participant'];
+            <?php
+            include('../../include/connexion.php');
 
-        if (isset($_POST['ajouter'])) {
-            $mail_participant = $_POST['mail_participant'];
-            // Ajouter un participant
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $insertparticipantQuery = "INSERT INTO participant (nom_participant, prenom_participant, mail_participant) VALUES (?, ?, ?)";
-            $insertparticipantStmt = mysqli_prepare($conn, $insertparticipantQuery);
-            mysqli_stmt_bind_param($insertparticipantStmt, "sss", $nom_participant, $prenom_participant, $mail_participant);
+                $nom_participant = $_POST['nom_participant'];
+                $prenom_participant = $_POST['prenom_participant'];
 
-            if (mysqli_stmt_execute($insertparticipantStmt)) {
-                echo "<div class='main_message'> participant ajouté avec succès.</div>";
-            } else {
-                echo "<div class='err_message'> Erreur lors de l'ajout du participant : </div>" . mysqli_error($conn);
+                if (isset($_POST['ajouter'])) {
+                    $mail_participant = $_POST['mail_participant'];
+                    // Ajouter un participant
+
+                    $insertparticipantQuery = "INSERT INTO participant (nom_participant, prenom_participant, mail_participant) VALUES (?, ?, ?)";
+                    $insertparticipantStmt = mysqli_prepare($conn, $insertparticipantQuery);
+                    mysqli_stmt_bind_param($insertparticipantStmt, "sss", $nom_participant, $prenom_participant, $mail_participant);
+
+                    if (mysqli_stmt_execute($insertparticipantStmt)) {
+                        echo "<div class='main_message'> participant ajouté avec succès.</div>";
+                    } else {
+                        echo "<div class='err_message'> Erreur lors de l'ajout du participant : </div>" . mysqli_error($conn);
+                    }
+
+                    mysqli_stmt_close($insertparticipantStmt);
+                } elseif (isset($_POST['modifier'])) {
+
+                    $num_participant = $_POST['num_participant'];
+                    $mail_participant = $_POST['mail_participant'];
+
+                    // Modifier le participant
+                    $updateparticipantQuery = "UPDATE participant SET nom_participant = ?, prenom_participant = ?, mail_participant = ?  WHERE num_participant = ?";
+                    $updateparticipantStmt = mysqli_prepare($conn, $updateparticipantQuery);
+                    mysqli_stmt_bind_param($updateparticipantStmt, "sssi", $nom_participant, $prenom_participant, $mail_participant, $num_participant);
+
+                    if (mysqli_stmt_execute($updateparticipantStmt)) {
+                        echo "<div class='edit_message'> participant modifiée avec succès.</div>";
+                    } else {
+                        echo "<div class='err_message'> Erreur lors de la modification du participant : </div>" . mysqli_error($conn);
+                        mysqli_stmt_close($updateparticipantStmt);
+                    }
+                } elseif (isset($_POST['supprimer'])) {
+
+                    $num_participant = $_POST['num_participant'];
+
+                    // Supprimer le participant
+                    $deleteparticipantQuery = "DELETE FROM participant WHERE num_participant = ?";
+                    $deleteparticipantStmt = mysqli_prepare($conn, $deleteparticipantQuery);
+                    mysqli_stmt_bind_param($deleteparticipantStmt, "i", $num_participant);
+
+                    if (mysqli_stmt_execute($deleteparticipantStmt)) {
+                        echo "<div class='del_message'> participant supprimée avec succès.</div>";
+                    } else {
+                        echo "<div class='err_message'> Erreur lors de la suppression du participant : </div>" . mysqli_error($conn);
+                        mysqli_stmt_close($deleteparticipantStmt);
+                    }
+                }
             }
 
-            mysqli_stmt_close($insertparticipantStmt);
-        } elseif (isset($_POST['modifier'])) {
+            $participantsQuery = "SELECT * FROM participant";
+            $participantsResult = mysqli_query($conn, $participantsQuery);
 
-            $num_participant = $_POST['num_participant'];
-            $mail_participant = $_POST['mail_participant'];
-
-            // Modifier le participant
-            $updateparticipantQuery = "UPDATE participant SET nom_participant = ?, prenom_participant = ?, mail_participant = ?  WHERE num_participant = ?";
-            $updateparticipantStmt = mysqli_prepare($conn, $updateparticipantQuery);
-            mysqli_stmt_bind_param($updateparticipantStmt, "sssi", $nom_participant, $prenom_participant, $mail_participant, $num_participant);
-
-            if (mysqli_stmt_execute($updateparticipantStmt)) {
-                echo "<div class='edit_message'> participant modifiée avec succès.</div>";
+            if (mysqli_num_rows($participantsResult) > 0) {
+                echo "<table border='1'>";
+                echo "<tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Action</th></tr>";
+                while ($participant = mysqli_fetch_assoc($participantsResult)) {
+                    echo "<form method='POST' action=''>";
+                    echo "<tr>";
+                    echo "<td>{$participant['num_participant']}</td>";
+                    echo "<td><input type='text' name='nom_participant' value='{$participant['nom_participant']}' required></td>";
+                    echo "<td><input type='text' name='prenom_participant' value='{$participant['prenom_participant']}' required></td>";
+                    echo "<td><input type='text' name='mail_participant' value='{$participant['mail_participant']}' required></td>";
+                    echo "<td><input type='hidden' name='num_participant' value='{$participant['num_participant']}'>";
+                    echo "<button class=\"bt2\" type=\"submit\" name=\"modifier\">Modifier</button> ";
+                    echo "<button class=\"bt3\" type=\"submit\" name=\"supprimer\">Supprimer</button></td>";
+                    echo "</tr>";
+                    echo "</form>";
+                }
+                echo "</table>";
             } else {
-                echo "<div class='err_message'> Erreur lors de la modification du participant : </div>" . mysqli_error($conn);
-                mysqli_stmt_close($updateparticipantStmt);
+                echo "<div class='err_message'> Aucun participant trouvé.</div>";
             }
-        } elseif (isset($_POST['supprimer'])) {
 
-            $num_participant = $_POST['num_participant'];
-
-            // Supprimer le participant
-            $deleteparticipantQuery = "DELETE FROM participant WHERE num_participant = ?";
-            $deleteparticipantStmt = mysqli_prepare($conn, $deleteparticipantQuery);
-            mysqli_stmt_bind_param($deleteparticipantStmt, "i", $num_participant);
-
-            if (mysqli_stmt_execute($deleteparticipantStmt)) {
-                echo "<div class='del_message'> participant supprimée avec succès.</div>";
-            } else {
-                echo "<div class='err_message'> Erreur lors de la suppression du participant : </div>" . mysqli_error($conn);
-                mysqli_stmt_close($deleteparticipantStmt);
-            }
-        }
-    }
-
-    $participantsQuery = "SELECT * FROM participant";
-    $participantsResult = mysqli_query($conn, $participantsQuery);
-
-    if (mysqli_num_rows($participantsResult) > 0) {
-        echo "<table border='1'>";
-        echo "<tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Action</th></tr>";
-        while ($participant = mysqli_fetch_assoc($participantsResult)) {
-            echo "<form method='POST' action=''>";
-            echo "<tr>";
-            echo "<td>{$participant['num_participant']}</td>";
-            echo "<td><input type='text' name='nom_participant' value='{$participant['nom_participant']}' required></td>";
-            echo "<td><input type='text' name='prenom_participant' value='{$participant['prenom_participant']}' required></td>";
-            echo "<td><input type='text' name='mail_participant' value='{$participant['mail_participant']}' required></td>";
-            echo "<td><input type='hidden' name='num_participant' value='{$participant['num_participant']}'>";
-            echo "<button class=\"bt2\" type=\"submit\" name=\"modifier\">Modifier</button> ";
-            echo "<button class=\"bt3\" type=\"submit\" name=\"supprimer\">Supprimer</button></td>";
-            echo "</tr>";
-            echo "</form>";
-        }
-        echo "</table>";
-    } else {
-        echo "<div class='err_message'> Aucun participant trouvé.</div>";
-    }
-
-    mysqli_close($conn);
-    ?>
+            mysqli_close($conn);
+            ?>
+        </div>
 </body>
 
 </html>

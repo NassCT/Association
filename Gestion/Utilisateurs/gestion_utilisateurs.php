@@ -11,50 +11,47 @@
 
     <body>
         <div class="container">
+
             <!-- NavBar -->
             <aside>
                 <!-- Menu -->
                 <p>Menu</p>
-                <a href="dashboard.php" class="nav-link">
-                    <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon "></object>
+                <a href="/Association/dashboard.php" class="nav-link">
+                    <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
                     <span>Tableau de bord</span>
                 </a>
-                <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link current-page">
-                    <object type="image/svg+xml" data="assets/img/icone/users.svg" class="navbar-icon"></object>
+                <a href="/Association/Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link current-page ">
+                    <object type="image/svg+xml" data="/Association/assets/img/icone/users.svg" class="navbar-icon"></object>
                     <span>Gestion des utilisateurs</span>
                 </a>
-                <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-                    <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+                <a href="/Association/Gestion/Utilisateurs/gestion_responsables.php" class="nav-link">
+                    <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
                     <span>Gestion des responsables</span>
                 </a>
-                <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-                    <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+                <a href="/Association/Gestion/Activités/gestion_activites.php" class="nav-link">
+                    <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
                     <span>Gestion des activités</span>
                 </a>
-                <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-                    <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+                <a href="/Association/Gestion/Activités/gestion_creneaux.php" class="nav-link">
+                    <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
                     <span>Gestion des créneaux</span>
                 </a>
-                <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-                    <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
+                <a href="/Association/Gestion/Utilisateurs/gestion_participants.php" class="nav-link">
+                    <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
                     <span>Gestion des participants</span>
                 </a>
-                <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-                    <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
-                    <span>Gestion des participations</span>
-                </a>
-                <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-                    <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
-                    <span>Gestion des utilisateurs</span>
-                </a>
-                <a href="include/logout.php" class="nav-link">
-                    <object type="image/svg+xml" data="assets/img/icone/logout.svg" class="navbar-icon"></object>
+                            <a href="/Association/Gestion/Activités/gestion_participations.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des participations</span>
+            </a>
+                <a href="/Association/include/logout.php" class="nav-link">
+                    <object type="image/svg+xml" data="/Association/assets/img/icone/logout.svg" class="navbar-icon logout"></object>
                     <span>Déconnexion</span>
                 </a>
             </aside>
 
             <div class="xcontent">
-                <h1 class="Title">Modifier un Utilisateur</h1>
+                <h1 class="Title"><br>Modifier un Utilisateur</h1>
 
                 <a href="../../dashboard.php" class="button">Retour</a>
 

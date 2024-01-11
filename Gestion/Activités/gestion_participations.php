@@ -10,66 +10,108 @@
 </head>
 
 <body>
+    <div class="container">
 
-    <a href="../../dashboard.php" class="button">Retour</a>
+        <!-- NavBar -->
+        <aside>
+            <!-- Menu -->
+            <p>Menu</p>
+            <a href="/Association/dashboard.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Tableau de bord</span>
+            </a>
+            <a href="/Association/Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/users.svg" class="navbar-icon"></object>
+                <span>Gestion des utilisateurs</span>
+            </a>
+            <a href="/Association/Gestion/Utilisateurs/gestion_responsables.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des responsables</span>
+            </a>
+            <a href="/Association/Gestion/Activités/gestion_activites.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des activités</span>
+            </a>
+            <a href="/Association/Gestion/Activités/gestion_creneaux.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des créneaux</span>
+            </a>
+            <a href="/Association/Gestion/Utilisateurs/gestion_participants.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des participants</span>
+            </a>
+            <a href="/Association/Gestion/Activités/gestion_participations.php" class="nav-link current-page">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des participations</span>
+            </a>
+            <a href="/Association/include/logout.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/logout.svg" class="navbar-icon logout"></object>
+                <span>Déconnexion</span>
+            </a>
+        </aside>
 
-    <h1 class="Title">Liste des participations</h1>
-    <?php
-    include('../../include/connexion.php');
+        <div class="xcontent">
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inscrire'])) {
-        // Code d'inscription ici
-    }
+            <a href="../../dashboard.php" class="button">Retour</a>
 
-    $participationsQuery = "SELECT pa.id_part, p.num_participant, p.nom_participant, p.prenom_participant, p.mail_participant, 
+            <h1 class="Title">Liste des participations</h1>
+            <?php
+            include('../../include/connexion.php');
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['inscrire'])) {
+                // Code d'inscription ici
+            }
+
+            $participationsQuery = "SELECT pa.id_part, p.num_participant, p.nom_participant, p.prenom_participant, p.mail_participant, 
                         a.nom_act, a.site, r.nom_resp, r.prenom_resp, c.heure_debut, c.heure_fin 
                         FROM participation pa
                         JOIN activite a ON pa.id_act = a.id_act
                         JOIN responsable r ON a.num_resp = r.num_resp
                         JOIN creneau c ON pa.id_creneau = c.id_creneau
                         JOIN participant p ON pa.num_participant = p.num_participant";
-    $participationsResult = mysqli_query($conn, $participationsQuery);
+            $participationsResult = mysqli_query($conn, $participationsQuery);
 
-    if (mysqli_num_rows($participationsResult) > 0) {
-        echo "<table border='1'>";
-        echo "<tr><th>Nom Participant</th><th>Prénom Participant</th><th>Email Participant</th><th>Nom de l'activité</th><th>Site</th><th>Nom du Responsable</th><th>Créneau</th><th>Action</th></tr>";
-        while ($participation = mysqli_fetch_assoc($participationsResult)) {
-            echo "<tr>";
-            echo "<td>{$participation['nom_participant']}</td>";
-            echo "<td>{$participation['prenom_participant']}</td>";
-            echo "<td>{$participation['mail_participant']}</td>";
-            echo "<td>{$participation['nom_act']}</td>";
-            echo "<td>{$participation['site']}</td>";
-            echo "<td>{$participation['nom_resp']} {$participation['prenom_resp']}</td>";
-            echo "<td>{$participation['heure_debut']} - {$participation['heure_fin']}</td>";
-            echo "<td><form method='POST' action=''><input type='hidden' name='id_participation' value='{$participation['id_part']}'>";               
-            echo "<button class=\"bt3\" type=\"submit\" name=\"supprimer\">Supprimer</button>";
-            echo "</form></td>";
-            echo "</tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "<div class='err_message'>Aucune participation trouvée.</div>";
-    }
+            if (mysqli_num_rows($participationsResult) > 0) {
+                echo "<table border='1'>";
+                echo "<tr><th>Nom Participant</th><th>Prénom Participant</th><th>Email Participant</th><th>Nom de l'activité</th><th>Site</th><th>Nom du Responsable</th><th>Créneau</th><th>Action</th></tr>";
+                while ($participation = mysqli_fetch_assoc($participationsResult)) {
+                    echo "<tr>";
+                    echo "<td>{$participation['nom_participant']}</td>";
+                    echo "<td>{$participation['prenom_participant']}</td>";
+                    echo "<td>{$participation['mail_participant']}</td>";
+                    echo "<td>{$participation['nom_act']}</td>";
+                    echo "<td>{$participation['site']}</td>";
+                    echo "<td>{$participation['nom_resp']} {$participation['prenom_resp']}</td>";
+                    echo "<td>{$participation['heure_debut']}᲼↯ {$participation['heure_fin']}</td>";
+                    echo "<td><form method='POST' action=''><input type='hidden' name='id_participation' value='{$participation['id_part']}'>";
+                    echo "<button class=\"bt3\" type=\"submit\" name=\"supprimer\">Supprimer</button>";
+                    echo "</form></td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "<div class='err_message'>Aucune participation trouvée.</div>";
+            }
 
-    // Suppression de la participation
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer'])) {
-        $id_participation = $_POST['id_participation'];
-        $deleteParticipationQuery = "DELETE FROM participation WHERE id_part = ?";
-        $deleteParticipationStmt = mysqli_prepare($conn, $deleteParticipationQuery);
-        mysqli_stmt_bind_param($deleteParticipationStmt, "i", $id_participation);
+            // Suppression de la participation
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['supprimer'])) {
+                $id_participation = $_POST['id_participation'];
+                $deleteParticipationQuery = "DELETE FROM participation WHERE id_part = ?";
+                $deleteParticipationStmt = mysqli_prepare($conn, $deleteParticipationQuery);
+                mysqli_stmt_bind_param($deleteParticipationStmt, "i", $id_participation);
 
-        if (mysqli_stmt_execute($deleteParticipationStmt)) {
-            echo "<div class='main_message'>Participation supprimée avec succès.</div>";
-        } else {
-            echo "<div class='err_message'>Erreur lors de la suppression de la participation : " . mysqli_error($conn) . "</div>";
-        }
+                if (mysqli_stmt_execute($deleteParticipationStmt)) {
+                    echo "<div class='main_message'>Participation supprimée avec succès.</div>";
+                } else {
+                    echo "<div class='err_message'>Erreur lors de la suppression de la participation : " . mysqli_error($conn) . "</div>";
+                }
 
-        mysqli_stmt_close($deleteParticipationStmt);
-    }
+                mysqli_stmt_close($deleteParticipationStmt);
+            }
 
-    mysqli_close($conn);
-    ?>
+            mysqli_close($conn);
+            ?>
+        </div>
 </body>
 
 </html>

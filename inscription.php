@@ -13,7 +13,7 @@
 
     <a href="dashboard.php" class="button">Retour</a>
 
-    <h1 class="Title">Inscription à une activité</h1>
+    <h1 class="Title"><br>Inscription à une activité</h1>
     <div class="form">
         <form method="POST" action="">
             <select name="id_act" required>

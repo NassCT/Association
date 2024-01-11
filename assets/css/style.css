@@ -1,7 +1,10 @@
+/* Import de la police Roboto depuis Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto");
+
 /* Variables */
 :root {
-  --first-color: #151515;
-  --second-color: #000000;
+  --first-color: #2d2d2d;
+  --second-color: #ffffff;
   --third-color: #3498db;
   --fourth-color: #2980b9;
   --fifth-color: #2587ff;
@@ -17,10 +20,14 @@
 
 /* Body */
 body {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
+  background-color: var(--first-color);
+  color: var(--second-color);
   width: 100%;
   height: 100vh;
 }
+
+
 
 /* Sidebar */
 aside {
@@ -30,7 +37,10 @@ aside {
   height: 100vh;
   background-image: linear-gradient(30deg, #0048bd, #44a7fd);
   border-top-right-radius: 80px;
+  min-width: 250px;
+  max-width: 250px;
 }
+
 
 aside a {
   font-size: 12px;
@@ -42,14 +52,23 @@ aside a {
   -webkit-tap-highlight-color: transparent;
 }
 
-aside a:hover {
-  color: var(--fifth-color);
-  background: #fff;
+aside a:hover,
+.logout:hover {
+  color: var(--second-color);
+  text-shadow: 0 0 5px #fff;
   outline: none;
   position: relative;
-  background-color: #fff;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7163%)
+    hue-rotate(347deg) brightness(113%) contrast(92%);
+}
+
+aside a:last-child:hover,
+.logout:last-child:hover {
+  color: #2587ff;
+  filter: brightness(0) saturate(100%) invert(75%) sepia(86%) saturate(6754%)
+    hue-rotate(337deg) brightness(95%) contrast(100%);
 }
 
 aside a i {
@@ -90,9 +109,10 @@ aside p {
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
-    hue-rotate(141deg) brightness(102%) contrast(102%);
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(190deg)
+    brightness(100%) contrast(100%);
 }
+
 .nav-link {
   display: flex;
   align-items: center;
@@ -100,8 +120,7 @@ aside p {
   color: #fff;
 }
 
-.current-page,
-.current-page:hover {
+.current-page {
   color: var(--fifth-color);
   background: #fff;
   outline: none;
@@ -129,15 +148,6 @@ aside p {
   margin: 0 0;
 }
 
-/* Sidebar */
-aside {
-  color: #fff;
-  width: 250px;
-  padding-left: 20px;
-  height: 100vh;
-  background-image: linear-gradient(30deg, #0048bd, #44a7fd);
-  border-top-right-radius: 80px;
-}
 /* Contents */
 .xcontent {
   display: flex;
@@ -165,6 +175,8 @@ td {
   padding: 15px;
   text-align: left;
   border: 1px solid var(--third-color);
+  background-color: var(--first-color);
+
 }
 
 tbody tr:nth-child(odd) {
@@ -230,12 +242,12 @@ tbody tr:nth-child(odd) {
 .form {
   position: relative;
   z-index: 1;
-  background: #ffffff;
+  background: #282828;
   max-width: 400px;
   margin: 0 auto 100px;
   padding: 40px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.418), 0 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .form input {
@@ -309,11 +321,7 @@ tbody tr:nth-child(odd) {
   animation: fadeOut 1s ease 1.5s forwards;
 }
 
-.main_message {
-  color: rgb(43, 158, 235);
-  animation: fadeOut 1s ease 2s forwards;
-}
-
+.main_message,
 .edit_message {
   color: #ffd500;
   animation: fadeOut 1s ease 2s forwards;
@@ -338,3 +346,4 @@ select {
 select option[disabled][selected] {
   display: none;
 }
+

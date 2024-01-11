@@ -7,65 +7,84 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
+<?php
+include('include/connexion.php');
+// Get the number of users
+$user_query = "SELECT COUNT(*) FROM utilisateurs";
+$user_result = mysqli_query($conn, $user_query);
+$user_count = 0;
+if ($user_result) {
+    $row = mysqli_fetch_row($user_result);
+    $user_count = $row[0];
+}
+// Get the number of activities
+$activity_query = "SELECT COUNT(*) FROM activite";
+$activity_result = mysqli_query($conn, $activity_query);
+$activity_count = 0;
+if ($activity_result) {
+    $row = mysqli_fetch_row($activity_result);
+    $activity_count = $row[0];
+}
+// Get the number of participants
+$participant_query = "SELECT COUNT(*) FROM participant";
+$participant_result = mysqli_query($conn, $participant_query);
+$participant_count = 0;
+if ($participant_result) {
+    $row = mysqli_fetch_row($participant_result);
+    $participant_count = $row[0];
+}
+mysqli_close($conn);
+?>
+
 <body>
-    <!-- NavBar -->
-    <aside>
-        <!-- Menu -->
-        <p>Menu</p>
-        <a href="dashboard.php" class="nav-link current-page">
-            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
-            <span>Tableau de bord</span>
-        </a>
-        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link ">
-            <object type="image/svg+xml" data="assets/img/icone/users.svg" class="navbar-icon"></object>
-            <span>Gestion des utilisateurs</span>
-        </a>
-        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
-            <span>Gestion des responsables</span>
-        </a>
-        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
-            <span>Gestion des activités</span>
-        </a>
-        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
-            <span>Gestion des créneaux</span>
-        </a>
-        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
-            <span>Gestion des participants</span>
-        </a>
-        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
-            <span>Gestion des participations</span>
-        </a>
-        <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link">
-            <object type="image/svg+xml" data="assets/img/icone/house.svg" class="navbar-icon"></object>
-            <span>Gestion des utilisateurs</span>
-        </a>
-        <a href="include/logout.php" class="nav-link">
-            <object type="image/svg+xml" data="assets/img/icone/logout.svg" class="navbar-icon"></object>
-            <span>Déconnexion</span>
-        </a>
-    </aside>
+    <div class="container">
+        <!-- NavBar -->
+        <aside>
+            <!-- Menu -->
+            <p>Menu</p>
+
+            <a href="dashboard.php" class="nav-link current-page">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Tableau de bord</span>
+            </a>
+            <a href="/Association/Gestion/Utilisateurs/gestion_utilisateurs.php" class="nav-link ">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/users.svg" class="navbar-icon"></object>
+                <span>Gestion des utilisateurs</span>
+            </a>
+            <a href="/Association/Gestion/Utilisateurs/gestion_responsables.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des responsables</span>
+            </a>
+            <a href="/Association/Gestion/Activités/gestion_activites.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des activités</span>
+            </a>
+            <a href="/Association/Gestion/Activités/gestion_creneaux.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des créneaux</span>
+            </a>
+            <a href="/Association/Gestion/Utilisateurs/gestion_participants.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des participants</span>
+            </a>
+            <a href="/Association/Gestion/Activités/gestion_participations.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
+                <span>Gestion des participations</span>
+            </a>
+            <a href="/Association/include/logout.php" class="nav-link">
+                <object type="image/svg+xml" data="/Association/assets/img/icone/logout.svg" class="navbar-icon logout"></object>
+                <span>Déconnexion</span>
+            </a>
+        </aside>
+
+        <div>
+            <p>Nombre d'utilisateurs: <?php echo $user_count; ?></p>
+            <p>Nombre d'activités: <?php echo $activity_count; ?></p>
+            <p>Nombre de participants: <?php echo $participant_count; ?></p>
+        </div>
+        
+    </div>
+
 </body>
-
-
-
-<div class="container">
-    <h1 class="Title">Bienvenue dans la page d'administration</h1>
-    <p>Choisissez une option :</p>
-    <a href="Gestion/Utilisateurs/gestion_utilisateurs.php" class="button">Gérer les Utilisateurs</a>
-    <a href="Gestion/Utilisateurs/gestion_responsables.php" class="button">Gérer les responsables</a>
-    <a href="Gestion/Activités/gestion_activites.php" class="button">Gérer les activités</a>
-    <a href="Gestion/Activités/gestion_creneaux.php" class="button">Gérer les créneaux</a>
-    <a href="Gestion/Utilisateurs/gestion_participants.php" class="button">Gérer les participants</a>
-    <a href="Gestion/Activités/gestion_participations.php" class="button">Gérer les participations</a><br><br>
-    <a href="inscription.php" class="button">Inscrire un utilisateur</a>
-    <a href="index.php" class="button2">Changer de session</a>
-    <a href="include/logout.php" class="button3">Déconnexion</a>
-</div>
-
 
 </html>

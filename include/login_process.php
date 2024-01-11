@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $role = 'visiteurs';
         $email = $_POST['email'];
 
-        $insert_query ="INSERT INTO utilisateurs (username, password, role, email) VALUES ($name, $pass, $role, $email)";
+        $insert_query = "INSERT INTO utilisateurs (username, password, role, email) VALUES ($name, $pass, $role, $email)";
 
         if ($conn->query($insert_query) === TRUE) {
             $_SESSION['admin'] = true;
@@ -26,7 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $login_result = $conn->query($login_query);
 
         if ($login_result->num_rows == 1) {
+            $user = $login_result->fetch_assoc();
+
+            $_SESSION['role'] = $user['role'];
             $_SESSION['admin'] = true;
+
             header('Location: ../dashboard.php');
         } else {
             header('Location: ../index.php?error=1&message=Identifiants incorrects');

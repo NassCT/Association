@@ -1,22 +1,3 @@
-<?php
-session_start();
-
-// Ajoutez des informations de débogage dans un fichier de journal
-error_log("Dashboard - Session admin: " . (isset($_SESSION['admin']) ? $_SESSION['admin'] : 'non défini') . "\n", 3, 'debug.log');
-error_log("Dashboard - Session role: " . (isset($_SESSION['role']) ? $_SESSION['role'] : 'non défini') . "\n", 3, 'debug.log');
-
-if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
-    header('Location: access_denied.php');
-    exit();
-}
-
-// Vous pouvez également vérifier le rôle ici
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'administrations') {
-    header('Location: access_denied.php');
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -30,7 +11,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'administrations') {
 </head>
 
 <?php
+session_start();
 include('include/connexion.php');
+$_SESSION['role'] = 'administrations';
+
 // Get the number of users
 $user_query = "SELECT COUNT(*) FROM utilisateurs";
 $user_result = mysqli_query($conn, $user_query);
@@ -97,10 +81,18 @@ mysqli_close($conn);
                 <object type="image/svg+xml" data="/Association/assets/img/icone/house.svg" class="navbar-icon"></object>
                 <span>Gestion des participations</span>
             </a>
-            <a href="/Association/include/logout.php" class="nav-link">
-                <object type="image/svg+xml" data="/Association/assets/img/icone/logout.svg" class="navbar-icon logout"></object>
-                <span>Déconnexion</span>
-            </a>
+            <?php
+            // Check if the "role" key is set in the $_SESSION array
+            if (isset($_SESSION['role']) && $_SESSION['role'] == 'administrations') {
+                ?>
+                <a href="/Association/include/logout.php" class="nav-link">
+                    <object type="image/svg+xml" data="/Association/assets/img/icone/logout.svg"
+                        class="navbar-icon logout"></object>
+                    <span>Déconnexion</span>
+                </a>
+            <?php
+            }
+            ?>
         </aside>
 
 
@@ -108,11 +100,11 @@ mysqli_close($conn);
         <div class="statistical">
             <!-- tl-commande -->
             <div class="tl-commande">
-                <img class="big_icon_size" src="assets/img/icone/utensils.svg" alt="Icone Stats">
+                <img src="assets/img/icone/users.svg" alt="Icone Stats">
                 <!-- middle -->
                 <div class="middle">
                     <div class="left">
-                        <h3>Total des commandes</h3>
+                        <h3>Total des utilisateurs</h3>
                         <h1><?php echo $user_count ?></h1>
                     </div>
 
